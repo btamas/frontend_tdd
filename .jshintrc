@@ -29,6 +29,9 @@
 		"clearTimeout": true,
 		"setInterval": true,
 		"clearInterval": true,
-		"config": true
+		"config": true,
+		"suite": true,
+		"setup": true,
+		"test": true
 	}
 }
