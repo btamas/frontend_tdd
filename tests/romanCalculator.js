@@ -7,7 +7,7 @@ suite('test Roman Calculator', function() {
 		this.romanCalculator = new RomanCalculator();
 	});
 
-	test('is this a roman calculator12', function() {
+	test('is this a roman calculator', function() {
 		assert.strictEqual(this.romanCalculator.isRomanCalculator(), true);
 	});
 });
