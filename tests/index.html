@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mocha tests</title>
+        <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    </head>
+    <body>
+        <div id="mocha"></div>
+        <div id="messages123"></div>
+        <div id="fixtures123"></div>
+        <script src="../node_modules/mocha/mocha.js"></script>
+        <script>mocha.setup('tdd')</script>
+        <script src="../bundle.js"></script>
+        <script>mocha.run();</script>
+    </body>
+</html>
