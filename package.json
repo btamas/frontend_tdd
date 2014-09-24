@@ -22,6 +22,7 @@
     "browserify": "~5.11.0",
     "jsdoc": "^3.3.0-alpha9",
     "chai-factories": "~0.1.0",
-    "sinon": "~1.10.3"
+    "sinon": "~1.10.3",
+    "underscore": "~1.7.0"
   }
 }
