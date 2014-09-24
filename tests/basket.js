@@ -20,7 +20,7 @@ suite('basket', function() {
 	test('new basket is empty', function() {
 		var productTypes = this.basket.getProductTypes();
 
-		assert.strictEqual(productTypes.length, 0);
+		assert.lengthOf(productTypes, 0);
 
 		var amount = this.basket.getProductAmount('something');
 
@@ -33,7 +33,7 @@ suite('basket', function() {
 		this.basket.put(sampleProduct, 5);
 
 		var productTypes = this.basket.getProductTypes();
-		assert.strictEqual(productTypes.length, 1);
+		assert.lengthOf(productTypes, 1);
 		assert.isTrue(_.contains(productTypes, sampleProduct));
 
 		var amount = this.basket.getProductAmount(sampleProduct.getId());
@@ -48,7 +48,7 @@ suite('basket', function() {
 		this.basket.put(product2, 3);
 
 		var productTypes = this.basket.getProductTypes();
-		assert.strictEqual(productTypes.length, 1);
+		assert.lengthOf(productTypes, 1);
 		assert.isTrue(_.contains(productTypes, product1));
 
 		var amount = this.basket.getProductAmount(product1.getId());
@@ -64,7 +64,7 @@ suite('basket', function() {
 		this.basket.put(product1, 1);
 
 		var productTypes = this.basket.getProductTypes();
-		assert.strictEqual(productTypes.length, 2);
+		assert.lengthOf(productTypes, 2);
 		assert.isTrue(_.contains(productTypes, product1));
 		assert.isTrue(_.contains(productTypes, product2));
 
