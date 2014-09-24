@@ -4,7 +4,7 @@ var chai = require('chai'),
 	sinon = require('sinon'),
 	_ = require('underscore'),
 
-	Backet = require('../libs/basket');
+	Basket = require('../libs/basket');
 
 chai.use(factories);
 
@@ -14,7 +14,7 @@ suite('basket', function() {
 	});
 
 	setup(function() {
-		this.basket = new Backet();
+		this.basket = new Basket();
 	});
 
 	test('new basket is empty', function() {

@@ -6,7 +6,7 @@ var assert = require('chai').assert,
 	Light = require('../libs/light'),
 	Starship = require('../libs/starship');
 
-this.products = {
+this._products = {
 	product  : [
 		new Product(111, 'something'),
 		{
@@ -56,6 +56,6 @@ var productsTests = function(name, product, properties) {
 	});
 };
 
-_.forEach(this.products, function(data, name) {
+_.forEach(this._products, function(data, name) {
 	productsTests(name, data[0], data[1]);
 });
