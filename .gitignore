@@ -2,3 +2,5 @@ node_modules
 coverage
 doc
 .idea
+all_test_file.js
+bundle.js

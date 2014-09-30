@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha -u tdd -R spec tests/*.js",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- -u tdd -R spec tests/*.js",
-    "jshint": "node_modules/.bin/jshint libs tests",
-    "jscs": "node_modules/.bin/jscs -c .jscsrc libs tests",
-    "jsdoc": "node_modules/.bin/jsdoc -c .jsdocrc libs",
-    "bundle": "node_modules/.bin/browserify -o bundle.js tests/*.js"
+    "test": "npm run-script generate_window_loader && npm run-script bundle",
+    "generate_window_loader": "node load_files_on_windows.js",
+    "bundle": "node_modules\\.bin\\browserify -t html2js-browserify all_test_file.js -o bundle.js",
+    "mocha": "node_modules\\.bin\\mocha tests/**/*.js",
+    "coverage": "node_modules\\.bin\\istanbul cover node_modules/mocha/bin/_mocha -- -u tdd -R spec tests/*.js",
+    "jshint": "node_modules\\.bin\\jshint libs tests",
+    "jscs": "node_modules\\.bin\\jscs -c .jscsrc libs tests",
+    "jsdoc": "node_modules\\.bin\\jsdoc -c .jsdocrc libs/Dropdown"
   },
   "author": "",
   "license": "BSD-2-Clause",
@@ -19,10 +21,17 @@
     "chai": "~1.9.1",
     "jshint": "~2.5.5",
     "jscs": "~1.6.0",
-    "browserify": "~5.11.0",
     "jsdoc": "^3.3.0-alpha9",
     "chai-factories": "~0.1.0",
     "sinon": "~1.10.3",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "html2js-browserify": "0.0.2",
+    "browserify": "~5.12.1",
+    "async": "~0.9.0"
+  },
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "jquery": "~1.11.1",
+    "backbone.marionette": "~2.2.1"
   }
 }
