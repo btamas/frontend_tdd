@@ -17,7 +17,7 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "mocha": "~1.21.4",
-    "istanbul": "~0.3.0",
+    "istanbul": "~0.3.2",
     "chai": "~1.9.1",
     "jshint": "~2.5.5",
     "jscs": "~1.6.0",
@@ -26,8 +26,12 @@
     "sinon": "~1.10.3",
     "underscore": "~1.7.0",
     "html2js-browserify": "0.0.2",
-    "browserify": "~5.12.1",
-    "async": "~0.9.0"
+    "browserify": "^4.0.0",
+    "async": "~0.9.0",
+    "karma-browserify": "~0.2.1",
+    "istanbulify": "~0.1.0",
+    "karma": "~0.12.24",
+    "karma-mocha": "~0.1.9"
   },
   "dependencies": {
     "backbone": "~1.1.2",

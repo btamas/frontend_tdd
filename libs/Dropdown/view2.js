@@ -1,10 +1,13 @@
 /**
- * @name module:Dropdown2
- * @constructor
- * @extends module:Dropdown
+ * @module views/ExtDropdown
  */
-var Dropdown2 = Dropdown.extend(
-	/** @lends module:Dropdown2.prototype **/
+
+/**
+ * @class
+ * @extends module:views/Dropdown~Dropdown
+ */
+var Dropdown = Dropdown.extend(
+	/** @lends module:views/ExtDropdown~Dropdown.prototype **/
 	{
 		/**
 		 * Valamicuccos
@@ -12,12 +15,9 @@ var Dropdown2 = Dropdown.extend(
 		 * @returns {*}
 		 */
 		valami : function(a) {
-			return a;
+			this.onDropdownItemClick()
 		}
 	}
 );
 
-/**
- * @exports Dropdown2
- */
-module.exports = Dropdown2;
+module.exports = Dropdown;

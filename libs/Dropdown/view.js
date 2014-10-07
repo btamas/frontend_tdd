@@ -1,12 +1,15 @@
+/**
+ * @module views/Dropdown
+ */
+
 var Backbone = require('backbone'),
 
 	/**
-	 * @name module:Dropdown
-	 * @constructor
-	 * @extends Backbone.Marionette.View
+	 * @class
+	 * @extends external:Backbone.Marionette.View
 	 */
-	Dropdown = Backbone.Marionette.View.extend(
-		/** @lends module:Dropdown.prototype **/
+		Dropdown = Backbone.Marionette.View.extend(
+		/** @lends module:views/Dropdown~Dropdown.prototype */
 		{
 			ui : {
 				title         : '.dropdownTitle',
@@ -20,14 +23,14 @@ var Backbone = require('backbone'),
 			},
 
 			/**
-			 * Handles title click and set the open class to the list
+			 * Handles ui.title click event and set the open class to the ui.dropList
 			 */
 			onTitleClick : function() {
 				this.$(this.ui.dropList).addClass('open');
 			},
 
 			/**
-			 * Handles item click and set the clicked item to active
+			 * Handles ui.dropItems click and set the clicked item to active
 			 * @param {Jquery.Event} event
 			 */
 			onDropdownItemClick : function(event) {
@@ -37,7 +40,4 @@ var Backbone = require('backbone'),
 		}
 	);
 
-/**
- * @exports Dropdown
- */
 module.exports = Dropdown;
