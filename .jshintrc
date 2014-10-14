@@ -17,21 +17,20 @@
 	"maxlen": 120,
 	"undef": true,
 	"globals": {
+		"global": true,
 		"module": true,
 		"require": true,
 		"console": true,
 		"window": true,
 		"document": true,
-		"navigator": true,
-		"screen": true,
 		"alert": true,
 		"setTimeout": true,
 		"clearTimeout": true,
 		"setInterval": true,
 		"clearInterval": true,
-		"config": true,
 		"suite": true,
 		"setup": true,
+		"teardown": true,
 		"test": true
 	}
 }

@@ -1,12 +1,13 @@
 var assert = require('chai').assert,
 	sinon = require('sinon'),
 	Backbone = require('backbone'),
+	testContent = require('./content/testcontent.html'),
 
 	Dropdown = require('../../libs/Dropdown/view');
 
 suite('testing dropdown view', function() {
 	setup(function() {
-		Backbone.$('body').html(loadHTML('./content/testcontent1.html', __dirname));
+		Backbone.$('#sandbox').html(testContent);
 		Dropdown.prototype.onTitleClick = sinon.spy(Dropdown.prototype, 'onTitleClick');
 		Dropdown.prototype.onDropdownItemClick = sinon.spy(Dropdown.prototype, 'onDropdownItemClick');
 		this.dropdown = new Dropdown({el : '.dropdown'});
