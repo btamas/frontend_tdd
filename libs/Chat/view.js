@@ -30,15 +30,12 @@ var Backbone = require('backbone'),
 
 			/**
 			 * Validate message
-			 * @param message
+			 * @param {String} message - Contains the message that should check
 			 * @returns {boolean}
 			 * @private
 			 */
 			_validateMessage : function(message) {
-				if (!_.isUndefined(message) && message.length > 0 && message.length <= this.MAX_MESSAGE_LENGTH) {
-					return true;
-				}
-				return false;
+				return (!_.isUndefined(message) && message.length > 0 && message.length <= this.MAX_MESSAGE_LENGTH);
 			},
 
 			/**
