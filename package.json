@@ -10,15 +10,16 @@
     "mocha": "node_modules\\.bin\\mocha -u tdd -R spec -r tests/setup_jsdom.js tests/**/*.js",
     "generate_loader": "node load_all_test_files.js",
     "bundle": "node_modules\\.bin\\browserify -t html2js-browserify tests/setup_framework.js all_test_file.js -o bundle.js",
-    "coverage": "node_modules\\.bin\\istanbul cover node_modules/mocha/bin/_mocha -- -u tdd -R spec -r tests/setup_jsdom.js tests/**/*.js",
+    "coverage": "node_modules\\.bin\\istanbul cover node_modules/mocha/bin/_mocha -- -u tdd -R spec -r tests/setup_jsdom.js libs/**/*.js tests/**/*.js",
     "jshint": "node_modules\\.bin\\jshint libs tests",
     "jscs": "node_modules\\.bin\\jscs -c .jscsrc libs tests",
-    "jsdoc": "node_modules\\.bin\\jsdoc -c .jsdocrc libs/Chat"
+    "jsdoc": "node_modules\\.bin\\jsdoc -c .jsdocrc libs/Chat libs/behaviors"
   },
   "author": "",
   "license": "BSD-2-Clause",
   "devDependencies": {
     "async": "~0.9.0",
+    "backbone-faux-server": "^0.10.4",
     "browserify": "^4.0.0",
     "chai": "~1.9.1",
     "chai-factories": "~0.1.0",

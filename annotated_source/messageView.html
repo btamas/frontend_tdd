@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>messageView.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>messageView.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * @module views/Message
+ */</span>
+
+<span class="hljs-keyword">var</span> Backbone = <span class="hljs-built_in">require</span>(<span class="hljs-string">'backbone'</span>),
+	_ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>This is an itemview. The itemview represents a model or an object.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	MessageView = Backbone.Marionette.ItemView.extend(<span class="hljs-comment">/** @lends module:views/MessageView~MessageView */</span>{
+		<span class="hljs-comment">/**
+		 * @member
+		 * @default
+		 */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>This will be the tag, when we create one of them.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		tagName   : <span class="hljs-string">'li'</span>,
+		<span class="hljs-comment">/**
+		 * @member
+		 * @default
+		 */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>This will be the class, when we create of of them.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		className : <span class="hljs-string">'message'</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>This value contains the template. I used the template engine of underscore. If the render function of the view
+runs, the template renders automatically and inserted to the main element ($el).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		template  : _.template(<span class="hljs-string">'(&lt;%= id %&gt;) &lt;%= text %&gt;'</span>),
+
+		events : {
+			<span class="hljs-string">'click'</span> : <span class="hljs-string">'onClick'</span>
+		},
+
+		<span class="hljs-comment">/**
+		 * @class MessageView
+		 * @extends external:Backbone.Marionette.ItemView
+		 * @constructs
+		 */</span>
+		initialize : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			MessageView.__super__.initialize.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>If the model of the view change, we want to render the view automatically.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">this</span>.listenTo(<span class="hljs-keyword">this</span>.model, <span class="hljs-string">'change'</span>, <span class="hljs-keyword">this</span>.render);
+		},
+
+		<span class="hljs-comment">/**
+		 * Handles click event
+		 */</span>
+		onClick : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>If we wants to remove an element, we should delete the just the model. It triggers the collections,
+that triggers the compositeview and that destroys the our view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">this</span>.model.destroy();
+		},
+
+		<span class="hljs-comment">/**
+		 * Runs after render. It sets the sent class to the main element.
+		 */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>This function runs when we rerender the view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		onRender : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>We can easily get data from the model.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.model.get(<span class="hljs-string">'id'</span>)) {
+				<span class="hljs-keyword">this</span>.$el.addClass(<span class="hljs-string">'sent'</span>);
+			}
+		}
+	});
+
+<span class="hljs-built_in">module</span>.exports = MessageView;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

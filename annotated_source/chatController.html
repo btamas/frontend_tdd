@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>chatController.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>chatController.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * @module controllers/Chat
+ * @requires module:collections/Messages
+ * @requires module:views/Chat
+ */</span>
+
+<span class="hljs-keyword">var</span> Backbone = <span class="hljs-built_in">require</span>(<span class="hljs-string">'backbone'</span>),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>This controller initializes the model and the view, so it needs them.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	Messages = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./messages'</span>),
+	ChatView = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./chatView'</span>),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>The controller uses Marionette Controller as its base.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	ChatController = Backbone.Marionette.Controller.extend(
+		<span class="hljs-comment">/** @lends module:controllers/Chat~ChatController.prototype */</span>
+		{
+			<span class="hljs-comment">/**
+			 * @class ChatController
+			 * @constructs
+			 * @extends external:Backbone.Marionette.Controller
+			 */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>This function automatically runs, when we create an instance from this module.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			initialize : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>It creates a collection, that will store data.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">this</span>.messages = <span class="hljs-keyword">new</span> Messages();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>It creates a view, that will contain the messages and the message input and send button also.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">this</span>.chatView = <span class="hljs-keyword">new</span> ChatView({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>The view will use this element as main element.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					el         : <span class="hljs-string">'.chat'</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>The view will work with this data.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					collection : <span class="hljs-keyword">this</span>.messages</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>The controller calls the render after the initialize, because we want to show the view instantly.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				}).render();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>It wants to listen send:message event on the view. It’s important to use this.listenTo, because
+if the controller will destroy, the listenTo events automatically unbinds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">this</span>.listenTo(<span class="hljs-keyword">this</span>.chatView, <span class="hljs-string">'send:message'</span>, <span class="hljs-keyword">this</span>.addMessage);
+			},
+
+			<span class="hljs-comment">/**
+			 * Add message
+			 * @param {String} message Sent message
+			 * @returns {Message}
+			 */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>This function defines the addMessage functionality. It is triggered by the view, and it triggers back
+the view with the result (sent/error)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			addMessage : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>It adds data of the message to the collection. Only the data structure is necessary, because
+the collection automatically creates a model based on the data.
+The validate:true says, it wants to validate the data. If the data is not valid the add will return
+with false else it will return with a model.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">var</span> model = <span class="hljs-keyword">this</span>.messages.add({text : message}, {validate : <span class="hljs-literal">true</span>});
+
+				<span class="hljs-keyword">if</span> (model) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>If the model is defined, it saves it.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					model.save();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>It triggers the view, the message is sent. The render will automatically happen, when the model
+will be saved.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.chatView.trigger(<span class="hljs-string">'message:sent'</span>);
+				}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>If the result of the add is false, we triggers the view with the error event.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">this</span>.chatView.trigger(<span class="hljs-string">'message:error'</span>);
+			}
+		});
+
+<span class="hljs-built_in">module</span>.exports = ChatController;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

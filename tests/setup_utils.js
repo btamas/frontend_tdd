@@ -5,7 +5,7 @@ var Backbone = require('backbone'),
 	Utils = function() {};
 
 Utils.prototype.loadTestContent = function(testContent) {
-	Backbone.$('#sandbox').html(testContent);
+	return Backbone.$('#sandbox').html(testContent);
 };
 
 Utils.prototype.loadTemplateContent = function(templateContent) {
@@ -32,6 +32,19 @@ Utils.prototype.generateString = function(length, character) {
 	}
 
 	return new Array(length + 1).join(character);
+};
+
+Utils.prototype.createFakeServer = function(sandbox) {
+	if (_.isUndefined(sandbox)) {
+		sandbox = sinon;
+	}
+
+	var server = sandbox.useFakeXMLHttpRequest();
+	server.onCreate = function(xhr) {
+		server.requests.push(xhr);
+	};
+
+	return server;
 };
 
 module.exports = new Utils();
