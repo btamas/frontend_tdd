@@ -1,0 +1,32 @@
+{
+  "name": "TDDExam",
+  "version": "0.0.0",
+  "description": "Parser writed in typescript\r ============",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/btamas/frontend_tdd.git"
+  },
+  "author": "btamas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/btamas/frontend_tdd/issues"
+  },
+  "homepage": "https://github.com/btamas/frontend_tdd",
+  "dependencies": {
+    "underscore": "^1.8.2"
+  },
+  "devDependencies": {
+    "chai": "^2.1.1",
+    "mocha": "^2.2.1",
+    "mocha-testdata": "^1.1.0",
+    "typescript": "^1.4.1",
+    "typescript-tpm": "^0.1.7"
+  }
+}
