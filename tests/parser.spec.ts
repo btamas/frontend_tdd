@@ -94,10 +94,6 @@ class MultiLineInput extends Test.Test {
     }
 }
 
-class LabelInput extends Test.Test {
-    public name = '';
-}
-
 var parserSuite = new ParserSuite([
     new OneLineTest(),
     new OneLineIsNotString(),
