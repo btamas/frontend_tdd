@@ -7,7 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run-script build_ts && npm run-script mocha",
+    "coverage": "node_modules\\.bin\\istanbul cover node_modules/mocha/bin/_mocha -- -u tdd -R spec libs/**/*.js tests/**/*.js",
+    "mocha": "node_modules\\.bin\\mocha -u tdd -R spec tests/**/*.js",
+    "build_ts": "node_modules/.bin/tsc --sourcemap -m commonjs -t ES5 libs/*.ts tests/*.ts"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
   },
   "devDependencies": {
     "chai": "^2.1.1",
+    "istanbul": "^0.3.7",
     "mocha": "^2.2.1",
     "mocha-testdata": "^1.1.0",
     "typescript": "^1.4.1",
