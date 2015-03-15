@@ -94,9 +94,66 @@ class MultiLineInput extends Test.Test {
     }
 }
 
+class SecondLineAsLabel extends Test.Test {
+    public name = 'parse second line as label';
+    private parser:Parser.Parser;
+
+    public dataProvider() {
+        return [
+            [
+                '#useFirstLineAsLabels\nName,Email,Phone\nMark,marc@be.com,998\nNoemi,noemi@ac.co.uk,888',
+                {
+                    labels: ['Name', 'Email', 'Phone'],
+                    data: [
+                        ['Mark', 'marc@be.com', '998'],
+                        ['Noemi', 'noemi@ac.co.uk', '888']
+                    ]
+                }
+            ],
+            [
+                '#useFirstLineAsLabels',
+                {
+                    labels: [],
+                    data: []
+                }
+            ],
+            [
+                '#useFirstLineAsLabelsANDSOMETHING\nLabel1',
+                {
+                    labels: ['Label1'],
+                    data: []
+                }
+            ],
+            [
+                '#useFirstLineAsLabels\n\nData1,Data2\nData3',
+                {
+                    labels: [''],
+                    data: [
+                        ['Data1', 'Data2'],
+                        ['Data3']
+                    ]
+                }
+            ],
+            [
+                '#NOTuseFirstLineAsLabels\nLabel1\nData1',
+                [
+                    ['#NOTuseFirstLineAsLabels'],
+                    ['Label1'],
+                    ['Data1']
+                ]
+            ],
+        ];
+    }
+
+    public test(input:String, output:any) {
+        assert.deepEqual(this.parser.parse(input), output);
+    }
+}
+
 var parserSuite = new ParserSuite([
     new OneLineTest(),
     new OneLineIsNotString(),
-    new MultiLineInput()
+    new MultiLineInput(),
+    new SecondLineAsLabel()
 ]);
 parserSuite.run();
