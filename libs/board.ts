@@ -26,10 +26,25 @@ export class Board {
 	}
 
 	public getFields(): number[][] {
-		var fieldClones: number[] = _.clone(this.fields);
+		var fieldsClone: number[] = _.clone(this.fields);
 		return _.map(new Array(this.dimensionY), function (): number[] {
-			return fieldClones.splice(0, this.dimensionY);
+			return fieldsClone.splice(0, this.dimensionY);
 		}, this);
+	}
+
+	public isThereAnyValidStep(): boolean {
+		var x: number = this.actualPositionX,
+			y: number = this.actualPositionY;
+
+		return this.isFirstStep() ||
+			this.isValidStep(x - 2, y - 1) ||
+			this.isValidStep(x - 2, y + 1) ||
+			this.isValidStep(x - 1, y - 2) ||
+			this.isValidStep(x - 1, y + 2) ||
+			this.isValidStep(x + 1, y - 2) ||
+			this.isValidStep(x + 1, y + 2) ||
+			this.isValidStep(x + 2, y - 1) ||
+			this.isValidStep(x + 2, y + 1);
 	}
 
 	private initialize(): void {
@@ -59,7 +74,11 @@ export class Board {
 		return _.isUndefined(this.actualPositionX) && _.isUndefined(this.actualPositionY);
 	}
 
+	private isEmpty(x: number, y: number): boolean {
+		return !_.isNumber(this.fields[this.getFieldNumber(x, y)]);
+	}
+
 	private isValidStep(x: number, y: number): boolean {
-		return this.isOnTheField(x, y) && (this.isFirstStep() || this.isValidHorseStep(x, y));
+		return this.isOnTheField(x, y) && this.isEmpty(x, y) && (this.isFirstStep() || this.isValidHorseStep(x, y));
 	}
 }

@@ -62,7 +62,7 @@ class BoardValidHorseStepsTest extends Test.Test {
 	public name: string = 'valid horse steps';
 	private board: Board.Board;
 
-	public dataProvider(): any[] {
+	public dataProvider(): number[][][][] {
 		return [
 			[[[1, 1], [3, 2], [5, 1]]], //right
 			[[[8, 4], [6, 3], [4, 4]]], //left
@@ -82,9 +82,67 @@ class BoardValidHorseStepsTest extends Test.Test {
 	}
 }
 
+class CustomBoardSuite extends Test.Suite {
+	public name: string = 'Custom Board';
+	private board: Board.Board;
+
+	public setup(): void {
+		this.board = new Board.Board(3, 3);
+	}
+}
+
+class NoMoreValidStepTest extends Test.Test {
+	public name: string = 'No more valid step';
+	private board: Board.Board;
+
+	public dataProvider(): number[][][][] {
+		return [
+			[[
+				// u, d, * l, r * 2 = 8
+				[1, 1],
+				[3, 2], //2 possibility
+				[1, 3], //left down
+				[2, 1], //up right
+				[3, 3], //down right
+				[1, 2], //left up
+				[3, 1], //right up
+				[2, 3] //down left
+			]],
+			[[
+				[2,2]
+			]],
+			[[
+				[3, 1],
+				[2, 3], //2 possibility
+				[1, 1], //up left
+				[3, 2], //right down
+				[1, 3],
+				[2, 1],
+				[3, 3],
+				[1, 2]
+			]]
+		];
+	}
+
+	public test(steps: number[][]): void {
+		_.forEach(steps, (step)=> {
+			var x = step[0],
+				y = step[1];
+			assert.isTrue(this.board.isThereAnyValidStep());
+			this.board.stepTo(x, y);
+		});
+		assert.isFalse(this.board.isThereAnyValidStep());
+	}
+}
+
 var boardSuite: Test.Suite = new BoardSuite([
 	new BoardValidStepTest(),
 	new BoardInvalidStepTest(),
 	new BoardValidHorseStepsTest()
 ]);
 boardSuite.run();
+
+var customBoardSuite: Test.Suite = new CustomBoardSuite([
+	new NoMoreValidStepTest()
+]);
+customBoardSuite.run();
